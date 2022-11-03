@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Packages</title>
+    <link rel="shortcut icon" type="image/png" href="/Img Data/blue ocean favcon.jpg">
+    <script src="https://kit.fontawesome.com/8cbc109b9d.js" crossorigin="anonymous"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        * {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+
+        /*social media*/
+        #social_media {
+            width: 100%;
+            height: 50px;
+            display: flex;
+            justify-content: space-between;
+            background-color: white;
+            align-items: center;
+            padding-left: 2vw;
+            padding-right: 2vw;
+            box-sizing: border-box;
+            position: fixed;
+            top: 0;
+            z-index: 999;
+        }
+
+        #logo_for_socialMedia {
+            display: none;
+        }
+
+        #social_media>div {
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            gap: 20px;
+        }
+
+        #social_media>div>a>i {
+            font-size: 20px;
+            color: black;
+        }
+
+        #signal_icon {
+            width: 70px;
+        }
+
+        /*navigation_bar*/
+        nav {
+            width: 100%;
+            height: 100px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2vw 0 2vw;
+            box-sizing: border-box;
+            background-color: skyblue;
+            position: fixed;
+            top: 50px;
+            z-index: 999;
+        }
+
+        nav>h3>a {
+            color: black;
+            text-decoration: none;
+        }
+
+        #logo_for_nav {
+            width: 80px;
+            height: 80px;
+        }
+
+        nav>div>ul {
+            width: auto;
+            height: 50px;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            gap: 30px;
+        }
+
+        nav>div>ul>li {
+            list-style-type: none;
+            transition: .5s ease-in;
+        }
+
+        nav>div>ul>li>a {
+            color: black;
+            text-decoration: none;
+        }
+
+        /*hoverable_link*/
+        nav>div>ul:hover .hoverable_link {
+            opacity: 0.9;
+            filter: blur(1px);
+        }
+
+        nav>div>ul .hoverable_link:hover {
+            opacity: 1;
+            filter: blur(0px);
+            text-decoration: underline;
+        }
+
+        /*dropdown box in navigation bar*/
+        #dropdown {
+            position: relative;
+        }
+
+        #dropdown_content {
+            display: none !important;
+            width: 200%;
+            height: 50px;
+            border-radius: 20px;
+            box-shadow: 1px 5px 5px black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            top: 20px;
+            left: -40px;
+            background-color: skyblue;
+        }
+
+        #dropdown_content>ul>li {
+            width: 170%;
+            position: relative;
+            top: 10px;
+            left: 0px;
+            list-style-type: none;
+        }
+
+        #dropdown_content>ul>li>a {
+            color: black;
+            text-decoration: none;
+        }
+
+        #dropdown:hover>#dropdown_content {
+            display: block !important;
+        }
+
+        /*packages*/
+        #package {
+            position: relative;
+            top: 200px;
+        }
+
+        #titleForPackage {
+            text-align: center;
+            text-decoration: underline;
+            font-size: 40px;
+        }
+
+        #first_main_container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            text-align: center;
+        }
+
+        #second_main_container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            text-align: center;
+        }
+
+        #third_main_container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            text-align: center;
+        }
+
+        .buy_btn {
+            display: block;
+            width: 100px;
+            height: auto;
+            text-align: center;
+            position: relative;
+            left: 30%;
+        }
+
+        .package_prices {
+            font-size: 20px;
+            display: none;
+        }
+
+        .card {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            box-shadow: 10px 15px 1px black;
+            margin: 20px;
+            border-radius: 20px;
+            transition: .5s;
+            transition-delay: .5s;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+        }
+
+        .card:hover {
+            width: 500px;
+            height: 300px;
+            transition-delay: .5s;
+        }
+
+        .circle1 {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 20px;
+            overflow-x: hidden;
+            overflow-y: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .circle2 {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 20px;
+            overflow-x: hidden;
+            overflow-y: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .circle3 {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 20px;
+            overflow-x: hidden;
+            overflow-y: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .circle4 {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 20px;
+            overflow-x: hidden;
+            overflow-y: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .circle5 {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 20px;
+            overflow-x: hidden;
+            overflow-y: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .logo {
+            display: block;
+            width: 300px;
+            color: black;
+            background-color: #ffffff;
+            box-shadow: 5px 5px 1px black;
+            border-radius: 10px;
+            font-size: 20px;
+            text-align: center;
+            overflow-y: hidden;
+            z-index: 998;
+            position: relative;
+            transition: .5s;
+            transition-delay: .5s;
+        }
+
+        .circle1 .logo,
+        .circle2 .logo,
+        .circle3 .logo,
+        .circle4 .logo,
+        .circle5 .logo {
+            font-size: 16px;
+            left: 23%;
+        }
+
+        .card:hover .circle1 .logo {
+            transform: scale(0);
+        }
+
+        .card:hover .circle2 .logo {
+            transform: scale(0);
+        }
+
+        .card:hover .circle3 .logo {
+            transform: scale(0);
+        }
+
+        .card:hover .circle4 .logo {
+            transform: scale(0);
+        }
+
+        .card:hover .circle5 .logo {
+            transform: scale(0);
+        }
+
+        .card:hover .circle1:before {
+            background-color: rgba(0, 0, 0, 0.6);
+            background-blend-mode: color;
+        }
+
+        .card:hover .circle2:before {
+            background-color: rgba(0, 0, 0, 0.6);
+            background-blend-mode: color;
+        }
+
+        .card:hover .circle3:before {
+            background-color: rgba(0, 0, 0, 0.6);
+            background-blend-mode: color;
+        }
+
+        .card:hover .circle4:before {
+            background-color: rgba(0, 0, 0, 0.6);
+            background-blend-mode: color;
+        }
+
+        .card:hover .circle5:before {
+            background-color: rgba(0, 0, 0, 0.6);
+            background-blend-mode: color;
+        }
+
+
+        .circle1::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("/bg img for packages.png");
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        .circle2::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("/bg img for packages.png");
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        .circle3::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("/bg img for packages.png");
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        .circle4::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("/bg img for packages.png");
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        .circle5::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("/bg img for packages.png");
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        .content {
+            width: 70%;
+            position: relative;
+            left: -100px;
+            z-index: 998;
+            color: white;
+            font-size: 14px;
+            line-height: 30px;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        #packageb_content {
+            line-height: 20px;
+        }
+
+        #packagec_content {
+            line-height: 20px;
+        }
+
+        #packaged_content {
+            line-height: 16px;
+        }
+
+        #vippackage_content {
+            line-height: 16px;
+        }
+
+        .card:hover .content {
+            opacity: 1;
+            transition-delay: 1s;
+            visibility: visible;
+        }
+
+        .content>a {
+            color: black;
+            background-color: white;
+            border-radius: 5px;
+            text-shadow: none;
+            box-shadow: 5px 5px 1px black;
+            text-decoration: none;
+        }
+
+        .content>ul {
+            width: 120%;
+            position: relative;
+            left: -50px;
+        }
+
+        .content>ul>li {
+            list-style-type: none;
+            margin-bottom: 5px;
+        }
+
+        .content>a:active {
+            background-color: rgb(199, 199, 199);
+        }
+
+        @media (max-width: 992px) {
+            .logo {
+                display: none;
+            }
+
+            .content {
+                visibility: visible;
+                opacity: 1;
+                left: 0%;
+            }
+
+            #first_main_container {
+                gap: 50px;
+                margin-bottom: 50px;
+            }
+
+            #second_main_container {
+                gap: 50px;
+                margin-bottom: 50px;
+            }
+
+            .content h1 {
+                display: none;
+            }
+
+            .package_prices {
+                display: block;
+            }
+
+            .circle1::before {
+                background-color: rgba(0, 0, 0, 0.6);
+                background-blend-mode: color;
+                background-position: center;
+            }
+
+            .circle2::before {
+                background-color: rgba(0, 0, 0, 0.6);
+                background-blend-mode: color;
+                background-position: center;
+            }
+
+            .circle3::before {
+                background-color: rgba(0, 0, 0, 0.6);
+                background-blend-mode: color;
+                background-position: center;
+            }
+
+            .circle4::before {
+                background-color: rgba(0, 0, 0, 0.6);
+                background-blend-mode: color;
+                background-position: center;
+            }
+
+            .circle5::before {
+                background-color: rgba(0, 0, 0, 0.6);
+                background-blend-mode: color;
+                background-position: center;
+            }
+
+            .card:hover {
+                width: 300px !important;
+                height: 300px !important;
+            }
+
+            .buy_btn {
+                left: 27%;
+            }
+
+        }
+
+        @media (max-width: 520px) {
+
+            /*nav*/
+            nav>div>ul {
+                gap: 20px;
+            }
+        }
+
+        @media (max-width:480px) {
+
+            /*nav*/
+            #logo_for_socialMedia {
+                display: block;
+                width: 50px;
+            }
+
+            #logo_for_nav {
+                display: none;
+            }
+
+            nav>div>ul {
+                gap: 10px;
+                position: relative;
+                left: -30px;
+                font-size: 15px;
+                font-weight: bolder;
+                height: 30px;
+            }
+
+            /*card*/
+            .card {
+                width: 300px;
+                height: 400px;
+            }
+
+            .card:hover {
+                width: 300px !important;
+                height: 400px !important;
+            }
+
+            .content {
+                font-size: 15px;
+
+            }
+
+            .content>h1 {
+                font-size: 26px;
+            }
+
+            #titleForPackage {
+                font-size: 25px;
+            }
+
+            #packagea_content {
+                width: 550%;
+                line-height: 50px;
+                left: -13px;
+                text-align: center;
+            }
+
+            #packageb_content {
+                line-height: 45px;
+                text-align: center;
+                left: -10px;
+            }
+
+            #packagec_content {
+                line-height: 30px;
+                text-align: center;
+                left: -10px;
+            }
+
+            #packaged_content {
+                line-height: 25px;
+                text-align: center;
+                left: -10px;
+            }
+
+            #vippackage_content {
+                line-height: 25px;
+                text-align: center;
+                left: -10px;
+            }
+
+            /*package buttons*/
+            #packageA_btn {
+                display: block;
+                width: 100px;
+                left: 120px;
+            }
+
+            #packageB_btn {
+                display: block;
+                width: 100px;
+                left: 70px;
+            }
+
+            #packageC_btn {
+                display: block;
+                width: 100px;
+                left: 70px;
+            }
+
+            #packageD_btn {
+                display: block;
+                width: 100px;
+                left: 70px;
+            }
+
+            #vippackage_btn {
+                display: block;
+                width: 100px;
+                left: 70px;
+            }
+
+        }
+
+        @media (max-width:320px) {
+
+            /*package buttons*/
+            #packageA_btn {
+                display: block;
+                width: 90%;
+                left: 25px;
+            }
+
+            #packageB_btn {
+                display: block;
+                width: 130%;
+                left: -22px;
+            }
+
+            #packageC_btn {
+                display: block;
+                width: 130%;
+                left: -22px;
+            }
+
+            #packageD_btn {
+                display: block;
+                width: 130%;
+                left: -22px;
+            }
+
+            #vippackage_btn {
+                display: block;
+                width: 130%;
+                left: -22px;
+            }
+
+        }
+
+        @media (max-width:280px) {
+            .card {
+                height: 600px;
+            }
+
+            .card:hover {
+                height: 600px !important;
+            }
+            
+        }
+    </style>
+</head>
+
+<body>
+    <!--Navbar-->
+    <div id="social_media">
+        <a href="/Blue Ocean Tv Home.html">
+            <img id="logo_for_socialMedia" src="blue ocean favcon.png">
+        </a>
+        <div>
+            <!--messenger-->
+            <a
+                href="https://l.facebook.com/l.php?u=https%3A%2F%2Fm.me%2FBOTVMM%3Ffbclid%3DIwAR3AyUGbQu0ai2VwGoVsI2Gv9r8BmrrJjmg52s60HAxjGcH7iv7_Dj-9Pws&h=AT3qmTrq59eZSHLst8ezG1rtnKIHQ4M4fDxxZQXwloCGHUFA9b9OfkpZ2pS0Vh4U21GqD2TJolnzoZQhdBtzVTGch2Z2C18BbB0x-ndpG8FlxQOgwCSYE4kxLQYXDbCUWTDU3myIOCCiaZiMWiYotw"><i
+                    class="fa-brands fa-facebook-messenger"></i></a>
+
+            <!--telegram chat-->
+            <a
+                href="https://l.facebook.com/l.php?u=https%3A%2F%2Ft.me%2Fblueocanchat%3Ffbclid%3DIwAR16T1COr519wEN76q618qPF1d-wTurw2UCWBhhO1kNAJH5Nm3ZhC3K95NI&h=AT3qmTrq59eZSHLst8ezG1rtnKIHQ4M4fDxxZQXwloCGHUFA9b9OfkpZ2pS0Vh4U21GqD2TJolnzoZQhdBtzVTGch2Z2C18BbB0x-ndpG8FlxQOgwCSYE4kxLQYXDbCUWTDU3myIOCCiaZiMWiYotw"><i
+                    title="telegram chat" class="fa-brands fa-telegram"></i></a>
+
+            <!--telegram channel-->
+            <a href="https://t.me/BlueOcean_TV"><i title="telegram channel" class="fa-brands fa-telegram"></i></a>
+
+            <!--signal-->
+            <a href="https://signal.group/#CjQKIFTceY-16vu7vI2mf9yMOmLBzeRs9r_1KXHoFIpiP_eCEhClcc4uX-YjLmqM0XBxMf8N"><img
+                    id="signal_icon" src="signal messenger gp.png"></a>
+        </div>
+    </div>
+
+    <nav>
+        <h3><a href="/Blue Ocean Tv Home.html">
+                <img id="logo_for_nav" src="blue ocean favcon.png">
+            </a>
+        </h3>
+
+        <!--navigation_bar-->
+        <div>
+            <ul>
+                <!--home Link-->
+                <li class="hoverable_link"><a href="/Blue Ocean Tv Home.html">Home</a></li>
+
+                <!--package Link-->
+                <li class="hoverable_link"><a href="/Blue Ocean Tv Package.html">Package</a></li>
+
+                <!--download Link-->
+                <li class="hoverable_link" id="dropdown"><a href="/Blue Ocean Tv Download.html">Download</a>
+                    <div id="dropdown_content">
+                        <ul>
+                            <li><a href="Blue Ocean Tv Download.html">Smart Tv</a></li>
+                        </ul>
+                    </div>
+                </li>
+
+                <!--fire stick tv link-->
+                <li class="hoverable_link"><a href="/Blue Ocean Tv Fire Stick.html">Fire TV Stick 4K</a></li>
+            </ul>
+        </div>
+    </nav>
+
+
+
+    <!--Package A-->
+
+    <div id="package">
+        <h1 id="titleForPackage">ပက်ကေ့ဂျ် စျေးနှုန်းများ</h1>
+        <div id="first_main_container">
+            <div>
+            <h2 class="package_prices">Package A<h2 class="package_prices">(1 month - 3 Device)4000 kyats</h2></h2>
+            <div class="card">
+                <div class="circle1">
+                    <p class="logo">Package A<br>
+                        (1 month - 3Device) 4000Kyats
+                    </p>
+                    <div class="content" id="packagea_content">
+                        <h1>Package A</h1>
+                        <ul>
+                            <li>
+                                <i class="fa-solid fa-check"></i>
+                                1000 Sport channels only
+                            </li>
+                            <li>
+                                <i class="fa-solid fa-check"></i>
+                                PPV channel include
+                            </li>
+                            <li>
+                                <i class="fa-solid fa-check"></i>
+                                Support all devices
+                            </li>
+                            <li>
+                                <i class="fa-solid fa-check"></i>
+                                Minimum internet speed 20Mbps
+                            </li>
+                        </ul>
+                        <a class="buy_btn" id="packageA_btn" href="/Blue Ocean Tv ContactUs.html">Buy Now</a>
+                    </div>
+                </div>
+            </div>
+            </div>
+
+            <!--Package B-->
+
+            <div>
+                <h2 class="package_prices">Package B<h2 class="package_prices">(1 month - 3 Device) 4500kyats</h2></h2>
+            <div class="card">
+                <div class="circle2">
+                    <p class="logo">Package B<br>(1 month - 3 Device) 4500 kyats</p>
+                    <div class="content" id="packageb_content">
+                        <h1>Package B</h1>
+                        <ul>
+                            <li>
+                                <i class="fa-solid fa-check"></i>
+                                4,000 CHANNELS SPORTS & ENTERTAINMENT CHANNELS
+                            </li>
+                            <li>
+                                <i class="fa-solid fa-check"></i>
+                                MOVIE & SERIES (MM SUB)
+                            </li>
+                            <li>
+                                <i class="fa-solid fa-check"></i>
+                                PPV channel include
+                            </li>
+                            <li>
+                                <i class="fa-solid fa-check"></i>
+                                Support All Devices
+                            </li>
+                            <li>
+                                <i class="fa-solid fa-check"></i>
+                                Minimum internet speed 20Mbps
+                            </li>
+                        </ul>
+                        <a class="buy_btn" id="packageB_btn" href="/Blue Ocean Tv ContactUs.html">Buy Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+
+        <!--Package C-->
+
+        <div id="second_main_container">
+            <div>
+                <h2 class="package_prices">Package C<h2 class="package_prices">(1 month - 3 Device) 5000kyats</h2></h2>
+            <div class="card">
+                <div class="circle3">
+                    <p class="logo">Package C<br>(1 month - 3 Device) 5000 Kyats</p>
+                    <div class="content" id="packagec_content">
+                        <h1>Package C</h1>
+                        <ul>
+                            <li>
+                                <i class="fa-solid fa-check"></i>
+                                SD, HD & FHD CHANNELS
+                            </li>
+                            <li>
+                                <i class="fa-solid fa-check"></i>
+                                5,000 CHANNELS SPORTS & ENTERTAINMENT CHANNELS
+                            </li>
+                            <li>
+                                <i class="fa-solid fa-check"></i>
+                                Adult(18+) Channels & VOD
+                            </li>
+                            <li>
+                                <i class="fa-solid fa-check"></i>
+                                Movies & Series (Myanmar)
+                            </li>
+                            <li>
+                                <i class="fa-solid fa-check"></i>
+                                PPV Channels Included
+                            </li>
+                            <li>
+                                <i class="fa-solid fa-check"></i>
+                                Support all devices
+                            </li>
+                            <li>
+                                <i class="fa-solid fa-check"></i>
+                                Minimum Internet Speed 15 Mbps
+                            </li>
+
+                        </ul>
+                        <a class="buy_btn" id="packageC_btn" href="/Blue Ocean Tv ContactUs.html">Buy Now</a>
+                    </div>
+                </div>
+            </div>
+            </div>
+
+            <!--PAckage D-->
+
+            <div>
+                <h2  class="package_prices">Package D<h2 class="package_prices">(1 month - 3 Device) 7000kyats</h2></h2>
+            <div class="card">
+                <div class="circle4">
+                    <p class="logo">Package D<br>(1 month - 3 Device) 7000 Kyats</p>
+                    <div class="content" id="packaged_content">
+                        <h1>Package D</h1>
+                        <ul>
+                            <li>
+                                <i class="fa-solid fa-check"></i>
+                                SD, HD & FHD Channels
+                            </li>
+                            <li>
+                                <i class="fa-solid fa-check"></i>
+                                6,000 Channels Sports & Entertainment Channels
+                            </li>
+                            <li>
+                                <i class="fa-solid fa-check"></i>
+                                Movies & Series (Myanmar)
+                            </li>
+                            <li>
+                                <i class="fa-solid fa-check"></i>
+                                Live PPV Events 🥊
+                            </li>
+                            <li>
+                                <i class="fa-solid fa-check"></i>
+                                Ifollow ⚽️,SPFL ⚽️,Peacock
+                            </li>
+                            <li>
+                                <i class="fa-solid fa-check"></i>
+                                Setanta Sports,Mola TV,Viaplay
+                            </li>
+                            <li>
+                                <i class="fa-solid fa-check"></i>
+                                Espn+,Mls Pass 🇺🇸 Soccer,Spark Sport
+                            </li>
+                            <li>
+                                <i class="fa-solid fa-check"></i>
+                                Support all devices,Minimum Internet Speed 15 Mbps
+                            </li>
+                        </ul>
+                        <a class="buy_btn" id="packageD_btn" href="/Blue Ocean Tv ContactUs.html">Buy Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+
+        <!--VIP Package-->
+
+        <div id="third_main_container">
+            <div>
+                <h2 class="package_prices">VIP Package<h2 class="package_prices">(1 month - 3 Device) 6000kyats</h2></h2>
+            <div class="card">
+                <div class="circle5">
+                    <p class="logo">VIP Package<br>(1 month - 3 Device) 6000 kyats</p>
+                    <div class="content" id="vippackage_content">
+                        <h1>VIP Package</h1>
+                        <ul>
+                            <li>
+                                <i class="fa-solid fa-check"></i>
+                                1,900 SPORTS CHANNELS
+                            </li>
+                            <li>
+                                <i class="fa-solid fa-check"></i>
+                                SD, HD & FHD , HUD CHANNELS
+                            </li>
+                            <li>
+                                <i class="fa-solid fa-check"></i>
+                                Live PPV Events ,Ifollow ⚽️
+                            </li>
+                            <li>
+                                <i class="fa-solid fa-check"></i>
+                                SPFL ⚽️,Peacock,Setanta Sports
+                            </li>
+                            <li>
+                                <i class="fa-solid fa-check"></i>
+                                Mola TV,Viaplay,Rush Sports
+                            </li>
+                            <li>
+                                <i class="fa-solid fa-check"></i>
+                                Espn+,Mls Pass 🇺🇸 Soccer,Spark Sport
+                            </li>
+                            <li>
+                                <i class="fa-solid fa-check"></i>
+                                Now Hk Sports,Stan Sports,NFL , NBA , NHL , MLB
+                            </li>
+                            <li>
+                                <i class="fa-solid fa-check"></i>
+                                Support all devices,Minimum Internet Speed 15 Mbps
+                            </li>
+                        </ul>
+                        <a class="buy_btn" id="vippackage_btn" href="/Blue Ocean Tv ContactUs.html">Buy Now</a>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

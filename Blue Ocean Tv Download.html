@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/png" href="/Img Data/blue ocean favcon.jpg">
+    <script src="https://kit.fontawesome.com/8cbc109b9d.js" crossorigin="anonymous"></script>
+    <title>Download</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            height: 95vw;
+        }
+
+        * {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+
+        /*social media*/
+        #social_media {
+            width: 100%;
+            height: 50px;
+            display: flex;
+            justify-content: space-between;
+            background-color: white;
+            align-items: center;
+            padding-left: 2vw;
+            padding-right: 2vw;
+            box-sizing: border-box;
+            position: fixed;
+            z-index: 999;
+        }
+
+        #logo_for_socialMedia {
+            display: none;
+        }
+
+        #social_media>div {
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            gap: 20px;
+        }
+
+        #social_media>div>a>i {
+            font-size: 20px;
+            color: black;
+        }
+
+        #signal_icon {
+            width: 70px;
+        }
+
+        /*navigation_bar*/
+        nav {
+            width: 100%;
+            height: 100px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2vw 0 2vw;
+            box-sizing: border-box;
+            background-color: skyblue;
+            position: fixed;
+            top: 50px;
+            z-index: 999;
+        }
+
+        nav>h3>a {
+            color: black;
+            text-decoration: none;
+        }
+
+        #logo_for_nav {
+            width: 80px;
+            height: 80px;
+        }
+
+        nav>div>ul {
+            width: auto;
+            height: 50px;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            gap: 30px;
+        }
+
+        nav>div>ul>li {
+            list-style-type: none;
+            transition: .5s ease-in;
+        }
+
+        nav>div>ul>li>a {
+            color: black;
+            text-decoration: none;
+        }
+
+        /*hoverable_link*/
+        nav>div>ul:hover .hoverable_link {
+            opacity: 0.9;
+            filter: blur(1px);
+        }
+
+        nav>div>ul .hoverable_link:hover {
+            opacity: 1;
+            filter: blur(0px);
+            text-decoration: underline;
+        }
+
+        /*dropdown box in navigation bar*/
+        #dropdown {
+            position: relative;
+        }
+
+        #dropdown_content {
+            display: none !important;
+            width: 200%;
+            height: 50px;
+            border-radius: 20px;
+            box-shadow: 1px 5px 5px black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            top: 20px;
+            left: -40px;
+            background-color: skyblue;
+        }
+
+        #dropdown_content>ul>li {
+            width: 170%;
+            position: relative;
+            top: 10px;
+            left: 0px;
+            list-style-type: none;
+        }
+
+        #dropdown_content>ul>li>a {
+            color: black;
+            text-decoration: none;
+        }
+
+        #dropdown:hover>#dropdown_content {
+            display: block !important;
+        }
+
+        #first_container {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            position: relative;
+            top: 250px;
+        }
+
+        #first_container>div>img {
+            width: 650px;
+            border-radius: 15px;
+            box-shadow: 5px 5px 1px black;
+        }
+
+        #first_container>div {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .download_link {
+            width: 500px;
+            height: 20px;
+            border-radius: 15px;
+            text-align: center;
+            text-decoration: none;
+            color: black;
+            background-color: skyblue;
+            box-shadow: 3px 3px 1px black;
+        }
+
+        .download_link:active {
+            background-color: rgb(80, 196, 242);
+        }
+
+        #second_container {
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            position: relative;
+            top: 400px;
+        }
+
+        #second_container>div>img {
+            width: 600px;
+            border-radius: 15px;
+            box-shadow: 5px 5px 1px black;
+        }
+
+        #second_container>div {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            align-items: center;
+        }
+
+        @media (max-width:1300px) {
+            #second_container {
+                top: 300px;
+            }
+            #forth_link {
+                margin-bottom: 50px;
+            }
+        }
+
+        @media (max-width:730px) {
+            #first_container>div>img {
+                width: 90% !important;
+            }
+
+            .download_link {
+                width: 90%;
+            }
+
+            #second_container>div>img {
+                width: 90% !important;
+            }
+            #forth_link {
+                margin-bottom: 50px;
+            }
+        }
+
+        @media (max-width: 520px) {
+
+            /*nav*/
+            nav>div>ul {
+                gap: 20px;
+            }
+            #forth_link {
+                margin-bottom: 50px;
+            }
+        }
+
+        @media (max-width:480px) {
+
+            /*nav*/
+            #logo_for_socialMedia {
+                display: block;
+                width: 50px;
+            }
+
+            #logo_for_nav {
+                display: none;
+            }
+
+            nav>div>ul {
+                gap: 20px;
+                position: relative;
+                left: -30px;
+                font-size: 15px;
+                font-weight: bolder;
+                height: 30px;
+            }
+
+            #forth_link {
+                margin-bottom: 50px;
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+    <!--Navbar-->
+    <div id="social_media">
+        <a href="/Blue Ocean Tv Home.html">
+            <img id="logo_for_socialMedia" src="blue ocean favcon.png">
+        </a>
+        <div>
+            <!--messenger-->
+            <a
+                href="https://l.facebook.com/l.php?u=https%3A%2F%2Fm.me%2FBOTVMM%3Ffbclid%3DIwAR3AyUGbQu0ai2VwGoVsI2Gv9r8BmrrJjmg52s60HAxjGcH7iv7_Dj-9Pws&h=AT3qmTrq59eZSHLst8ezG1rtnKIHQ4M4fDxxZQXwloCGHUFA9b9OfkpZ2pS0Vh4U21GqD2TJolnzoZQhdBtzVTGch2Z2C18BbB0x-ndpG8FlxQOgwCSYE4kxLQYXDbCUWTDU3myIOCCiaZiMWiYotw"><i
+                    class="fa-brands fa-facebook-messenger"></i></a>
+
+            <!--telegram chat-->
+            <a
+                href="https://l.facebook.com/l.php?u=https%3A%2F%2Ft.me%2Fblueocanchat%3Ffbclid%3DIwAR16T1COr519wEN76q618qPF1d-wTurw2UCWBhhO1kNAJH5Nm3ZhC3K95NI&h=AT3qmTrq59eZSHLst8ezG1rtnKIHQ4M4fDxxZQXwloCGHUFA9b9OfkpZ2pS0Vh4U21GqD2TJolnzoZQhdBtzVTGch2Z2C18BbB0x-ndpG8FlxQOgwCSYE4kxLQYXDbCUWTDU3myIOCCiaZiMWiYotw"><i
+                    title="telegram chat" class="fa-brands fa-telegram"></i></a>
+
+            <!--telegram channel-->
+            <a href="https://t.me/BlueOcean_TV"><i title="telegram channel" class="fa-brands fa-telegram"></i></a>
+
+            <!--signal-->
+            <a href="https://signal.group/#CjQKIFTceY-16vu7vI2mf9yMOmLBzeRs9r_1KXHoFIpiP_eCEhClcc4uX-YjLmqM0XBxMf8N"><img
+                    id="signal_icon" src="signal messenger gp.png"></a>
+        </div>
+    </div>
+
+    <nav>
+        <h3><a href="/Blue Ocean Tv Home.html">
+                <img id="logo_for_nav" src="blue ocean favcon.png">
+            </a>
+        </h3>
+
+        <!--navigation_bar-->
+        <div>
+            <ul>
+                <li class="hoverable_link"><a href="/Blue Ocean Tv Home.html">Home</a></li>
+                <li class="hoverable_link"><a href="/Blue Ocean Tv Package.html">Package</a></li>
+                <li class="hoverable_link" id="dropdown"><a href="/Blue Ocean Tv Download.html">Download</a>
+                    <div id="dropdown_content">
+                        <ul>
+                            <li><a href="/Blue Ocean Tv Download.html">Smart Tv</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="hoverable_link"><a href="/Blue Ocean Tv Fire Stick.html">Fire TV Stick 4K</a></li>
+            </ul>
+        </div>
+    </nav>
+
+
+    <div id="first_container">
+
+        <div>
+            <img src="download image 1.png">
+
+            <!--direct download-->
+            <a href="https://www.google.com/url?q=https%3A%2F%2Farchive.org%2Fdownload%2Fblueoceantv%2FBOXC.apk&sa=D&sntz=1&usg=AOvVaw3l_r4p7tkNKsq4Oo1JpVEj"
+                class="download_link">Direct Download</a>
+
+            <!--media fire-->
+            <a href="https://www.google.com/url?q=https%3A%2F%2Fwww.mediafire.com%2Ffile%2Ff6rx9ul5j5nwp1h%2FBOXC.apk%2Ffile&sa=D&sntz=1&usg=AOvVaw0VdBniPVO-_zPv49GaFgR5"
+                class="download_link">Media Fire</a>
+        </div>
+        <div>
+            <img src="download image 2.png">
+
+            <!--direct download-->
+            <a href="https://www.google.com/url?q=https%3A%2F%2Farchive.org%2Fdownload%2Fblueoceantv%2FBOPURPLE.apk&sa=D&sntz=1&usg=AOvVaw2oawF05M6R7fsvSMjmDdXG"
+                class="download_link">Direct Download</a>
+
+            <!--mediafire-->
+            <a href="https://www.google.com/url?q=https%3A%2F%2Fwww.mediafire.com%2Ffile%2Fhpir1b13bfvmkj9%2FBOPURPLE.apk%2Ffile&sa=D&sntz=1&usg=AOvVaw14aaHYLnDZ2DlErf82SSN3"
+                class="download_link">Media Fire</a>
+        </div>
+    </div>
+
+    <div id="second_container">
+        <div>
+            <img src="download image 3.png">
+
+            <!--direct download-->
+            <a href="https://www.google.com/url?q=https%3A%2F%2Farchive.org%2Fdownload%2Fblueoceantv%2FBOXC%2528V5%2529.apk&sa=D&sntz=1&usg=AOvVaw1VctT6C2VbvPChnxvbw7Yh"
+                class="download_link">Direct Download</a>
+
+            <!--media fire-->
+            <a href="https://www.google.com/url?q=https%3A%2F%2Fwww.mediafire.com%2Ffile%2Fhpir1b13bfvmkj9%2FBOPURPLE.apk%2Ffile&sa=D&sntz=1&usg=AOvVaw14aaHYLnDZ2DlErf82SSN3"
+                class="download_link">Media fire</a>
+        </div>
+        <div>
+            <img src="download 4.jpg">
+
+            <!--smart tv-->
+            <a id="forth_link" href="https://www.blueoceanlive.net/download/smart-tv" class="download_link">Smart TV</a>
+        </div>
+    </div>
+</body>
+
+</html>
